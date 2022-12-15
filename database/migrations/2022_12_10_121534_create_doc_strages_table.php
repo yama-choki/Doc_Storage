@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title', 100);
+            $table->string('category', 50);
             $table->string('text', 200)->nullable();
-            $table->string('url', 255)->nullable();
+            $table->longtext('url')->nullable();
             $table->boolean('trash')->default(false);
-            $table->revision('url', 255);
         });
     }
 
