@@ -13,7 +13,7 @@ class DocStrageController extends Controller
      */
     public function index()
     {
-        //
+        dd('test');
     }
 
     /**

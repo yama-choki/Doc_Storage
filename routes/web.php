@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocStrageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::prefix('docs')
+->middleware(['auth'])
+->controller(DocStrageController::class)
+->name('docs')
+->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::get('/{id}', 'show')->name('show');
+    Route::post('/{id}/destroy', 'destroy')->name('destroy');
+});
+
+
 
 Route::get('/', function () {
     return view('welcome');
