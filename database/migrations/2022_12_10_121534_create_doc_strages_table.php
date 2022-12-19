@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('doc_strages', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title', 100);
             $table->string('category', 50);
             $table->string('text', 200)->nullable();
             $table->longtext('url')->nullable();
             $table->boolean('trash')->default(false);
+            $table->timestamps();
         });
     }
 
