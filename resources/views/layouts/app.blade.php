@@ -15,15 +15,15 @@
     </head>
     <body class="font-sans antialiased">
         <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="w-full fixed">
+        <header class="bg-white shadow z-50">
+            <div class="w-full fixed drop-shadow">
                 @include('layouts.navigation')
             </div>
         </header>
 
         <div class="min-h-screen bg-gray-100">
         <!-- Page Content -->
-            <main>
+            <main class="z-10">
                 {{ $slot }}
             </main>
         </div>
