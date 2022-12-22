@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="flex flex-col min-h-[100vh] relative">
+<body class="flex flex-col min-h-[100vh]">
     <x-app-layout>
         <header>
             <x-slot name="header" >
@@ -26,26 +26,26 @@
             </x-slot>
         </header>
         <div class="header-space h-44"></div>
-        <div class="md:flex md:container mx-auto justify-between">
+        <div class="md:flex md:container mx-auto justify-between px-4">
             <section class="text-gray-600 body-font relative bg-white w-4/12 rounded drop-shadow sticky top-60" style="height:500px;">
                 <form action="POST">
                     <div class="p-2 w-full">
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
-                            <input type="text" id="title" name="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input placeholder="100文字以内で入力" type="text" id="title" name="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">Category</label>
-                            <input type="text" id="category" name="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input placeholder="言語や技術名を入力" type="text" id="category" name="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">URL</label>
-                            <input type="url" id="url" name="url" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input placeholder="URLをコピペ" type="url" id="url" name="url" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label for="message" class="leading-7 text-sm text-gray-600">Text</label>
-                                <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                <textarea placeholder="200文字以内で入力" id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                             </div>
                         </div>
                         <div class="p-2 w-full">
