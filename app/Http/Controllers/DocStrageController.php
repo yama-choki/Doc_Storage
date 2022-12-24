@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DocStrage;
 
 class DocStrageController extends Controller
 {
@@ -34,7 +35,15 @@ class DocStrageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DocStrage::create([
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'category' => $request->category,
+            'text' => $request->text,
+            'url' => $request->url,
+        ]);
+
+        return to_route('docs.index');
     }
 
     /**
