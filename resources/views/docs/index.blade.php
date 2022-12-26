@@ -29,7 +29,7 @@
         <div class="md:flex md:container mx-auto justify-between px-4">
             <section class="text-gray-600 body-font relative bg-white w-4/12 rounded drop-shadow sticky top-60" style="height:500px;">
                 <form method="post" action="{{ route('docs.store') }}">@csrf
-                    <input type="text" value="1" name="user_id">
+                    <input type="hidden" value="{{ $user->id }}" name="user_id">
                     <div class="p-2 w-full">
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
@@ -59,133 +59,35 @@
             </section>
             <section class="w-7/12">
                 <ul class="mb-10">
-                    <li class="w-full">
-                        <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
-                            <div class="flex justify-between">
-                                <div>Laravel</div>
-                                <div>2022-12-20 22:36</div>
+                    @foreach($docs as $doc)
+                        <li class="w-full">
+                            <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
+                                <div class="flex justify-between">
+                                    <div>{{ $doc->category }}</div>
+                                    <div>{{ $doc->created_at }}</div>
+                                </div>
+                                <h1 class="font-bold break-words">{{ $doc->title }}</h1>
+                                <div class="break-words">{{ $doc->text }}</div>
+                                <div class="md:flex">
+                                    <a href="{{ $doc->url }}" class="">
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                            Document
+                                        </button>
+                                    </a>
+                                    <a href="">
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                            Edit
+                                        </button>
+                                    </a>
+                                    <form action="">
+                                        <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                            <h1 class="font-bold break-words">タイトル</h1>
-                            <div class="break-words">jflkjfsdlafjisajiawjiwejiofjwiojfioq</div>
-                            <div class="md:flex">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Document
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Edit
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="w-full">
-                        <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
-                            <div class="flex justify-between">
-                                <div>Laravel</div>
-                                <div>2022-12-20 22:36</div>
-                            </div>
-                            <h1 class="font-bold break-words">タイトル</h1>
-                            <div class="break-words">jflkjfsdlafjisajiawjiwejiofjwiojfioq</div>
-                            <div class="md:flex">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Document
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Edit
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="w-full">
-                        <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
-                            <div class="flex justify-between">
-                                <div>Laravel</div>
-                                <div>2022-12-20 22:36</div>
-                            </div>
-                            <h1 class="font-bold break-words">タイトル</h1>
-                            <div class="break-words">jflkjfsdlafjisajiawjiwejiofjwiojfioq</div>
-                            <div class="md:flex">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Document
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Edit
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="w-full">
-                        <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
-                            <div class="flex justify-between">
-                                <div>Laravel</div>
-                                <div>2022-12-20 22:36</div>
-                            </div>
-                            <h1 class="font-bold break-words">タイトル</h1>
-                            <div class="break-words">jflkjfsdlafjisajiawjiwejiofjwiojfioq</div>
-                            <div class="md:flex">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Document
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Edit
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="w-full">
-                        <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
-                            <div class="flex justify-between">
-                                <div>Laravel</div>
-                                <div>2022-12-20 22:36</div>
-                            </div>
-                            <h1 class="font-bold break-words">タイトル</h1>
-                            <div class="break-words">jflkjfsdlafjisajiawjiwejiofjwiojfioq</div>
-                            <div class="md:flex">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Document
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Edit
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="w-full">
-                        <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
-                            <div class="flex justify-between">
-                                <div>Laravel</div>
-                                <div>2022-12-20 22:36</div>
-                            </div>
-                            <h1 class="font-bold break-words">タイトル</h1>
-                            <div class="break-words">jflkjfsdlafjisajiawjiwejiofjwiojfioq</div>
-                            <div class="md:flex">
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Document
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Edit
-                                </button>
-                                <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-
+                        </li>
+                    @endforeach
                 </ul>
             </section>
         </div>

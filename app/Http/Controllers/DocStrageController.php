@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DocStrage;
+use Illuminate\Support\Facades\Auth;
 
 class DocStrageController extends Controller
 {
@@ -14,7 +15,9 @@ class DocStrageController extends Controller
      */
     public function index()
     {
-        return view('docs.index');
+        $user = Auth::user();
+        $docs = DocStrage::where('user_id', '=', $user->id)->latest()->get();
+        return view('docs.index', compact('docs', 'user'));
     }
 
     /**
