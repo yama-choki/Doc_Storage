@@ -68,7 +68,9 @@ class DocStrageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $doc = DocStrage::find($id);
+
+        return view('docs.edit', compact('doc'));
     }
 
     /**
@@ -80,7 +82,14 @@ class DocStrageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $doc = DocStrage::find($id);
+        $doc->title = $request->title;
+        $doc->category = $request->category;
+        $doc->url = $request->url;
+        $doc->text = $request->text;
+        $doc->save();
+
+        return to_route('docs.index');
     }
 
     /**
@@ -91,6 +100,9 @@ class DocStrageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $doc = DocStrage::find($id);
+        $doc->delete();
+
+        return to_route('docs.index');
     }
 }

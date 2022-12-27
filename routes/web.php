@@ -14,20 +14,20 @@ use App\Http\Controllers\DocStrageController;
 |
 */
 
-// Route::prefix('docs')
-// ->middleware(['auth'])
-// ->controller(DocStrageController::class)
-// ->name('docs')
-// ->group(function(){
-//     Route::get('/', 'index')->name('index');
-//     Route::post('/', 'store')->name('store');
-//     Route::get('/{id}/edit', 'edit')->name('edit');
-//     Route::get('/{id}', 'show')->name('show');
-//     Route::post('/{id}/destroy', 'destroy')->name('destroy');
-// });
+Route::prefix('docs')
+->middleware(['auth'])
+->controller(DocStrageController::class)
+->name('docs.')
+->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    // Route::get('/{id}', 'show')->name('show');
+    Route::post('/{id}', 'update')->name('update');
+    Route::post('/{id}/destroy', 'destroy')->name('destroy');
+});
 
-Route::middleware(['auth'])
-->resource('docs', DocStrageController::class);
+// Route::middleware(['auth'])->resource('docs', DocStrageController::class);
 
 Route::get('/', function () {
     return view('welcome');
