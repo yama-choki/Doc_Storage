@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DocStrage;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreDocRequest;
 
 class DocStrageController extends Controller
 {
@@ -36,7 +37,7 @@ class DocStrageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDocRequest $request)
     {
         DocStrage::create([
             'user_id' => $request->user_id,

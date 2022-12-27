@@ -29,43 +29,45 @@
         </header>
         <div class="header-space h-44"></div>
         <div class="md:flex md:container mx-auto justify-between px-4">
-            <section class="text-gray-600 body-font relative bg-white w-4/12 rounded drop-shadow sticky top-60"
-                style="height:500px;">
-                <form method="post" action="{{ route('docs.store') }}">@csrf
-                    <input type="hidden" value="{{ $user->id }}" name="user_id">
-                    <div class="p-2 w-full">
-                        <div class="relative">
-                            <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
-                            <input placeholder="100文字以内で入力" type="text" id="title" name="title"
-                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        </div>
-                        <div class="relative">
-                            <label for="name" class="leading-7 text-sm text-gray-600">Category</label>
-                            <input placeholder="言語や技術名を入力" type="text" id="category" name="category"
-                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        </div>
-                        <div class="relative">
-                            <label for="name" class="leading-7 text-sm text-gray-600">URL</label>
-                            <input placeholder="URLをコピペ" type="url" id="url" name="url"
-                                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                        </div>
+            <section class="md:w-4/12">
+                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow sticky top-60 mb-16" style="height:500px;">
+                    <form method="post" action="{{ route('docs.store') }}">@csrf
+                        <input type="hidden" value="{{ $user->id }}" name="user_id">
                         <div class="p-2 w-full">
                             <div class="relative">
-                                <label for="message" class="leading-7 text-sm text-gray-600">Text</label>
-                                <textarea placeholder="200文字以内で入力" id="message" name="text"
-                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                                <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
+                                <input placeholder="100文字以内で入力" type="text" id="title" name="title" value="{{ old('title') }}"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
-                        </div>
-                        <div class="p-2 w-full">
-                            <button
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">Category</label>
+                                <input placeholder="言語や技術名を入力" type="text" id="category" name="category" value="{{ old('caegory') }}"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">URL</label>
+                                <input placeholder="URLをコピペ" type="url" id="url" name="url" value="{{ old('url') }}"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                            <div class="p-2 w-full">
+                                <div class="relative">
+                                    <label for="message" class="leading-7 text-sm text-gray-600">Text</label>
+                                    <textarea placeholder="200文字以内で入力" id="message" name="text"
+                                        class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ old('text') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="p-2 w-full">
+                                <button
                                 class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                                 Storage !!
                             </button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <!-- Validation Errors -->
+                <x-auth-validation-errors class="mb-4 mt-10" :errors="$errors" />
             </section>
-            <section class="w-7/12">
+            <section class="md:w-7/12 sm:mt-16 md:mt-0">
                 <ul class="mb-10">
                     @foreach ($docs as $doc)
                         <li class="w-full">
@@ -74,13 +76,13 @@
                                     <div>{{ $doc->category }}</div>
                                     <div>{{ $doc->updated_at }}</div>
                                 </div>
-                                <h1 class="font-bold break-words">{{ $doc->title }}</h1>
-                                <div class="break-words">{{ $doc->text }}</div>
-                                <div class="md:flex">
+                                <h1 class="font-bold  whitespace-pre break-words">{{ $doc->title }}</h1>
+                                <div class="whitespace-pre break-words">{{ $doc->text }}</div>
+                                <div class="flex justify-around">
                                     <a href="{{ $doc->url }}" class="" target="true">
                                         <button
                                             class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                            Document
+                                            Doc
                                         </button>
                                     </a>
                                     <form method="GET" action="{{ route('docs.edit', $doc->id) }}">
