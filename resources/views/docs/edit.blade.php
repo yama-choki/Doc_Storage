@@ -15,7 +15,7 @@
         <header>
             <x-slot name="header" >
                 <div class="flex">
-                    <h2 class="font-semibold text-xl text-gray-800 leading-tight w-1/5">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                         Doc Strage
                     </h2>
                 </div>
@@ -23,7 +23,7 @@
         </header>
         <div class="header-space h-44"></div>
             <section class="mx-auto text-gray-600 p-4 w-11/12 lg:w-3/4 body-font relative bg-white rounded drop-shadow sticky top-60" style="height:500px;">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight w-1/5">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     投稿を編集する
                 </h2>
                 <form method="post" action="{{ route('docs.update', $doc->id) }}"> @csrf
@@ -51,6 +51,10 @@
                                 Update !!
                             </button>
                         </div>
+                    </div>
+                    <div class="mx-auto flex w-full">
+                        <!-- Validation Errors -->
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     </div>
                 </form>
             </section>

@@ -22,7 +22,7 @@
                         <input type="text" id="text" name="email" placeholder="資料を探す"
                             class=" w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">
                         <button
-                            class="ml-2 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Search</button>
+                            class="ml-2 text-white bg-indigo-500 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Search</button>
                     </form>
                 </div>
             </x-slot>
@@ -67,7 +67,8 @@
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4 mt-10" :errors="$errors" />
             </section>
-            <section class="md:w-7/12 sm:mt-16 md:mt-0">
+            <section class="md:w-7/12 sm:mt-16 md:mt-0 mb-8">
+                {{ $docs->links() }}
                 <ul class="mb-10">
                     @foreach ($docs as $doc)
                         <li class="w-full">
@@ -76,13 +77,13 @@
                                     <div>{{ $doc->category }}</div>
                                     <div>{{ $doc->updated_at }}</div>
                                 </div>
-                                <h1 class="font-bold  whitespace-pre break-words">{{ $doc->title }}</h1>
-                                <div class="whitespace-pre break-words">{{ $doc->text }}</div>
+                                <h1 class="font-bold break-words whitespace-pre-line">{{ $doc->title }}</h1>
+                                <div class="break-words whitespace-pre-line">{{ $doc->text }}</div>
                                 <div class="flex justify-around">
                                     <a href="{{ $doc->url }}" class="" target="true">
                                         <button
-                                            class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                            Doc
+                                            class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                            Document
                                         </button>
                                     </a>
                                     <form method="GET" action="{{ route('docs.edit', $doc->id) }}">
@@ -97,7 +98,7 @@
                                             type="submit"
                                             href="#"
                                             data-id="{{ $doc->id }}"
-                                            class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">
+                                            class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-5 focus:outline-none hover:bg-pink-600 rounded text-lg">
                                             Delete
                                         </button>
                                     </form>
@@ -106,6 +107,7 @@
                         </li>
                     @endforeach
                 </ul>
+                {{ $docs->links() }}
             </section>
         </div>
 

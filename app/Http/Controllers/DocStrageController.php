@@ -17,7 +17,9 @@ class DocStrageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $docs = DocStrage::where('user_id', '=', $user->id)->latest()->get();
+        // $docs = DocStrage::where('user_id', '=', $user->id)->latest()->get();
+        // ページネーション対応
+        $docs = DocStrage::where('user_id', '=', $user->id)->latest()->paginate(20);
         return view('docs.index', compact('docs', 'user'));
     }
 
@@ -41,9 +43,9 @@ class DocStrageController extends Controller
     {
         DocStrage::create([
             'user_id' => $request->user_id,
-            'title' => $request->title,
-            'category' => $request->category,
-            'text' => $request->text,
+            'title' => trim($request->title),
+            'category' => trim($request->category),
+            'text' => trim($request->text),
             'url' => $request->url,
         ]);
 
@@ -81,7 +83,7 @@ class DocStrageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreDocRequest $request, $id)
     {
         $doc = DocStrage::find($id);
         $doc->title = $request->title;
