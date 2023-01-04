@@ -75,7 +75,7 @@
                             <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
                                 <div class="flex justify-between">
                                     <div>{{ $doc->category }}</div>
-                                    <div>{{ $doc->updated_at }}</div>
+                                    <div>{{ $doc->updated_at->format('Y/m/d-H:i') }}</div>
                                 </div>
                                 <h1 class="font-bold break-words whitespace-pre-line">{{ $doc->title }}</h1>
                                 <div class="break-words whitespace-pre-line">{{ $doc->text }}</div>
@@ -92,7 +92,7 @@
                                             Edit
                                         </button>
                                     </form>
-                                    <form onsubmit="return deleteReport();" method="POST" action="{{ route('docs.destroy', $doc->id) }}"
+                                    <form onsubmit="return deleteReport();" method="POST" action="{{ route('docs.delete', $doc->id) }}"
                                         id="delete_{{ $doc->id }}">@csrf
                                         <button
                                             type="submit"

@@ -22,12 +22,12 @@ class DocStrageController extends Controller
         // ページネーション対応
         // $docs = DocStrage::where('user_id', '=', $user->id)->latest()->paginate(20);
 
+
+        // 検索対応
         $search = $request->search;
         $query = DocStrage::search($search);
-        // 検索対応
+        $docs = $query->where('user_id', '=', $user->id)->where('trash', '=', 0)->select('id', 'user_id','title', 'category' ,'text', 'updated_at', 'created_at')->latest()->paginate(20);
 
-        $docs = $query->where('user_id', '=', $user->id)->select('id', 'user_id','title', 'category' ,'text', 'updated_at', 'created_at')->latest()->paginate(20);
-        // $docs = $documents->where('user_id', '=', $user->id)->latest()->paginate(20);
         return view('docs.index', compact('docs', 'user'));
     }
 
@@ -98,6 +98,15 @@ class DocStrageController extends Controller
         $doc->category = $request->category;
         $doc->url = $request->url;
         $doc->text = $request->text;
+        $doc->save();
+
+        return to_route('docs.index');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $doc = DocStrage::find($id);
+        $doc->trash = 1;
         $doc->save();
 
         return to_route('docs.index');
