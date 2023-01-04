@@ -14,12 +14,20 @@ class DocStrageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
+        // 通常
         // $docs = DocStrage::where('user_id', '=', $user->id)->latest()->get();
         // ページネーション対応
-        $docs = DocStrage::where('user_id', '=', $user->id)->latest()->paginate(20);
+        // $docs = DocStrage::where('user_id', '=', $user->id)->latest()->paginate(20);
+
+        $search = $request->search;
+        $query = DocStrage::search($search);
+        // 検索対応
+
+        $docs = $query->where('user_id', '=', $user->id)->select('id', 'user_id','title', 'category' ,'text', 'updated_at', 'created_at')->latest()->paginate(20);
+        // $docs = $documents->where('user_id', '=', $user->id)->latest()->paginate(20);
         return view('docs.index', compact('docs', 'user'));
     }
 
