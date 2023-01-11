@@ -26,7 +26,11 @@ class DocStrageController extends Controller
         // 検索対応
         $search = $request->search;
         $query = DocStrage::search($search);
-        $docs = $query->where('user_id', '=', $user->id)->where('trash', '=', 0)->select('id', 'user_id','title', 'category' ,'text', 'updated_at', 'created_at')->latest()->paginate(20);
+        $docs = $query->where('user_id', '=', $user->id)
+                ->where('trash', '=', 0)
+                ->select('id', 'user_id','title', 'category' ,'text', 'updated_at', 'created_at')
+                ->latest()
+                ->paginate(20);
 
         return view('docs.index', compact('docs', 'user'));
     }

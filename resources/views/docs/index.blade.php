@@ -30,23 +30,27 @@
         <div class="header-space h-44"></div>
         <div class="md:flex md:container mx-auto justify-between px-4">
             <section class="md:w-4/12 ">
-                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow sticky top-60 mb-16" style="height:500px;">
+                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow sticky top-60 mb-16"
+                    style="height:500px;">
                     <form method="post" action="{{ route('docs.store') }}">@csrf
                         <input type="hidden" value="{{ $user->id }}" name="user_id">
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
-                                <input placeholder="100文字以内で入力" type="text" id="title" name="title" value="{{ old('title') }}"
+                                <input placeholder="100文字以内で入力" type="text" id="title" name="title"
+                                    value="{{ old('title') }}"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="relative">
                                 <label for="name" class="leading-7 text-sm text-gray-600">Category</label>
-                                <input placeholder="言語や技術名を入力" type="text" id="category" name="category" value="{{ old('caegory') }}"
+                                <input placeholder="言語や技術名を入力" type="text" id="category" name="category"
+                                    value="{{ old('caegory') }}"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="relative">
                                 <label for="name" class="leading-7 text-sm text-gray-600">URL</label>
-                                <input placeholder="URLをコピペ" type="url" id="url" name="url" value="{{ old('url') }}"
+                                <input placeholder="URLをコピペ" type="url" id="url" name="url"
+                                    value="{{ old('url') }}"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                             <div class="p-2 w-full">
@@ -58,10 +62,10 @@
                             </div>
                             <div class="p-2 w-full">
                                 <button
-                                class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                Storage !!
-                            </button>
-                        </div>
+                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                    Storage !!
+                                </button>
+                            </div>
                     </form>
                 </div>
                 <!-- Validation Errors -->
@@ -94,12 +98,10 @@
                                             Edit
                                         </button>
                                     </form>
-                                    <form onsubmit="return deleteReport();" method="POST" action="{{ route('docs.delete', $doc->id) }}"
+                                    <form onsubmit="return deleteReport();" method="POST"
+                                        action="{{ route('docs.destroy', $doc->id) }}"
                                         id="delete_{{ $doc->id }}">@csrf
-                                        <button
-                                            type="submit"
-                                            href="#"
-                                            data-id="{{ $doc->id }}"
+                                        <button type="submit" href="#" data-id="{{ $doc->id }}"
                                             class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-5 focus:outline-none hover:bg-pink-600 rounded text-lg">
                                             Delete
                                         </button>
