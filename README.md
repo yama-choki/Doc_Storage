@@ -7,60 +7,75 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# アプリケーション名
+My_Laravel_Apps
+* Doc Strage(資料保管庫)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 開発理由
+　私は以前、Vue.js（Nuxt.js）やFirebaseなどを使用して、ポートフォリオのURLを投稿し公開することを目的としたWebアプリを開発し、それを自分のポートフォリオとして企業に就職しました。  
+　しかし、恥ずかしながら世の中に公開できるほどのクオリティではなく、自分だけでポートフォリオを量産できるわけでもなかったので、参考にした記事や教材のURLを投稿し簡単にアクセスできるようにしていました。  
+　結局、そのアプリは全く使用しない状態になってしまったのですが、Laravelを独学しアウトプットをしたかったため、以前開発したアプリを資料を保管するアプリとして、開発しなおそうと思い、本アプリを開発しました。  
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+　記事を参考にして実装した機能は、その記事を見返せばスムーズに実装できる反面、しばらく使わないと検索しても他の記事などに埋もれて見つけられないという不都合もあります。  
+　QiitaやZennやブログなど、ネット上のいろんなところにある有用な記事を保存できれば便利だと思うので、ぜひ利用されてください。
+<br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+　現在作成している機能は上記の機能（Doc Strageの機能）だけですが、
+* 今後別のアプリを開発する際、環境構築やデプロイなどの手間を省く
+* アプリが肥大化した際、必要応じてデータベースの構成を変更、それに伴うシステムの調整の練習  
+などの目的で、他のアプリを追加できるように構成しています。
+<br>
 
-## Learning Laravel
+# 主な使用要領
+* 必要と感じたもの
+* 開発時に参考にしたもの
+* 今後、学習したい教材
+* その他忘れたくない、ネット上のすべてのコンテンツ  
+のURL保存できます。
+<br>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. 新規登録またはテストアカウントでログインしてください
+2. Doc Strageページに移動しフォームに自由に入力し、Strage!!ボタンを押してください
+3. Docuentボタンをクリックすると別タブで登録したURLのページが表示されます
+4. Editボタンを押すと、投稿の内容を編集できます
+5. Deleteを押すと、投稿が削除されます
+6. ヘッダーの入力欄に任意のワードを入力の上、Searchボタンを押すと、タイトル、カテゴリー、テキストの中で検索し、表示できます。
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### どんなアプリか覗きたい方・試しに触ってみたい方・企業の採用担当者様
+　「どこの馬の骨かもわからない男が作ったアプリに、個人情報を登録するなんてありえない」という私と同じ考えの方向けにテストアカウントを用意しています。  
 
-## Laravel Sponsors
+> メールアドレス：test@test.com  
+> パスワード　　：password123  
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+でログイン可能です。  
+　テストアカウントの投稿には、私がこれまで学習で使用した記事やダミーデータで作成した投稿などが保存されています。  
+　テストアカウントでも、通常のアカウントどおりのすべての機能が使用できます。  
+<br>
+### このアプリ使えるじゃんって思った方
+新規登録の上使用していただけると喜びます。
+<br>
 
-### Premium Partners
+# 使用技術
+* Laravel
+* MySQL
+* Tailwind css
+* alpine.js
+* JavaScript
+<br>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# 機能一覧
+* ログイン機能
+* ログアウト機能
+* ユーザー登録機能
+* フォームのバリデーション機能（検証機能）
+* 投稿機能
+* 編集機能
+* 削除機能（削除フラグを使用しています）
+* 検索機能
+* ページネーション機能
+<br>
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# アプリのURL
+* https://yamachoki.sakura.ne.jp/My_Laravel_Apps/docs
