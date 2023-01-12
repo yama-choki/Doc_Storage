@@ -86,7 +86,7 @@
                                 <h1 class="font-bold break-words whitespace-pre-line">{{ $doc->title }}</h1>
                                 <div class="break-words whitespace-pre-line">{{ $doc->text }}</div>
                                 <div class="flex justify-around">
-                                    <a href="{{ $doc->url }}" class="" target="true">
+                                    <a href="{{ $doc->url }}" class="" target="_blank">
                                         <button
                                             class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                                             Document
