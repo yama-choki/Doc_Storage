@@ -28,7 +28,7 @@ class DocStrageController extends Controller
         $query = DocStrage::search($search);
         $docs = $query->where('user_id', '=', $user->id)
                 ->where('trash', '=', 0)
-                ->select('id', 'user_id','title', 'category' ,'text', 'updated_at', 'created_at')
+                ->select('id', 'user_id','title', 'category' ,'text', 'url', 'updated_at', 'created_at')
                 ->latest()
                 ->paginate(20);
 
