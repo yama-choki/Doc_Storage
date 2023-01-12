@@ -99,7 +99,7 @@
                                         </button>
                                     </form>
                                     <form onsubmit="return deleteReport();" method="POST"
-                                        action="{{ route('docs.destroy', $doc->id) }}"
+                                        action="{{ route('docs.delete', $doc->id) }}"
                                         id="delete_{{ $doc->id }}">@csrf
                                         <button type="submit" href="#" data-id="{{ $doc->id }}"
                                             class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-5 focus:outline-none hover:bg-pink-600 rounded text-lg">
