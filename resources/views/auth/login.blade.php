@@ -39,6 +39,12 @@
                     </a>
                 @endif
 
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        パスワードを忘れた方
+                    </a>
+                @endif
+
                 <x-primary-button class="ml-3">
                     ログイン
                 </x-primary-button>
