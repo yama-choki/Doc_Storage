@@ -28,10 +28,9 @@ Route::prefix('docs')
     Route::post('/{id}/destroy', 'destroy')->name('destroy');
 });
 
-// Route::middleware(['auth'])->resource('docs', DocStrageController::class);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {

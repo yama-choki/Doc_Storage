@@ -30,8 +30,7 @@
         <div class="header-space h-44"></div>
         <div class="md:flex md:container mx-auto justify-between px-4">
             <section class="md:w-4/12 ">
-                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow sticky top-60 mb-16"
-                    style="height:500px;">
+                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow sticky top-44 mb-16">
                     <form method="post" action="{{ route('docs.store') }}">@csrf
                         <input type="hidden" value="{{ $user->id }}" name="user_id">
                         <div class="p-2 w-full">
@@ -69,9 +68,7 @@
                     </form>
                 </div>
                 <!-- Validation Errors -->
-                <div class="bg-white p-4 rounded">
-                    <x-auth-validation-errors class="mb-4 mt-10" :errors="$errors" />
-                </div>
+                <x-auth-validation-errors class="mb-4 mt-10 p-4" :errors="$errors" />
             </section>
             <section class="md:w-7/12 sm:mt-16 md:mt-0 mb-8">
                 {{ $docs->links() }}
