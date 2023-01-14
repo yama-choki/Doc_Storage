@@ -18,9 +18,6 @@
                     <x-nav-link :href="route('docs.index')" :active="request()->routeIs(['docs.index'])">
                         Doc Strage
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('docs.index')" :active="request()->routeIs(['docs.index'])">
-                        Condition Report
-                    </x-nav-link> --}}
                 </div>
             </div>
 

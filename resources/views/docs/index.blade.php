@@ -68,7 +68,7 @@
                     </form>
                 </div>
                 <!-- Validation Errors -->
-                <x-auth-validation-errors class="mb-4 mt-10 p-4" :errors="$errors" />
+                <x-auth-validation-errors class="mb-4 p-4" :errors="$errors" />
             </section>
             <section class="md:w-7/12 sm:mt-16 md:mt-0 mb-8">
                 {{ $docs->links() }}
