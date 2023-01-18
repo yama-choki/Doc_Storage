@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         Dashboard
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        Home
+                    </x-nav-link>
                     <x-nav-link :href="route('docs.index')" :active="request()->routeIs(['docs.index'])">
                         Doc Strage
                     </x-nav-link>
