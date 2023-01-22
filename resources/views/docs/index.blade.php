@@ -96,7 +96,7 @@
                                             Edit
                                         </button>
                                     </form>
-                                    <form onsubmit="return deleteReport();" method="POST"
+                                    <form onsubmit="return deletePost();" method="POST"
                                         action="{{ route('docs.delete', $doc->id) }}"
                                         id="delete_{{ $doc->id }}">@csrf
                                         <button type="submit" href="#" data-id="{{ $doc->id }}"
@@ -115,7 +115,7 @@
 
         {{-- 削除確認メッセージ --}}
         <script>
-            function deleteReport() {
+            function deletePost() {
                 if (confirm('本当に削除しますか？')) {
                     return true;
                 } else {

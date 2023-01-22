@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocStrageController;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,20 @@ Route::prefix('docs')
     // Route::get('/{id}', 'show')->name('show');
     Route::post('/{id}', 'update')->name('update');
     Route::post('/delete/{id}', 'delete')->name('delete');
+    Route::post('/{id}/destroy', 'destroy')->name('destroy');
+});
+
+Route::prefix('home')
+->middleware(['auth'])
+->controller(HomeController::class)
+->name('home.')
+->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/{id}/edit', 'edit')->name('edit');
+    // Route::get('/{id}', 'show')->name('show');
+    Route::post('/{id}', 'update')->name('update');
+    Route::post('/{id}/delete', 'delete')->name('delete');
     Route::post('/{id}/destroy', 'destroy')->name('destroy');
 });
 

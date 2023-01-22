@@ -26,7 +26,7 @@ class StoreDocRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:100'],
             'category' => ['required', 'string', 'max:20'],
-            'url' => ['required', 'string', 'max:255'],
+            'url' => ['required', 'string'],
             'text' => ['max:200'],
         ];
     }
