@@ -95,16 +95,15 @@ class HomeController extends Controller
     public function destroy($id)
     {
         $friend = User::find($id);
-        $friend->delete;
+        $friend->delete();
 
-        return to_route('home.index');
+        return to_route('login');
     }
 
     public function delete($id)
     {
-        dd($id);
         $friend = Friend::find($id);
-        $friend->delete;
+        $friend->delete();
 
         return to_route('home.index');
     }
