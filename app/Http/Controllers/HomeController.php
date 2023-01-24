@@ -95,7 +95,7 @@ class HomeController extends Controller
     public function destroy($id)
     {
         $friend = User::find($id);
-        $friend->delete;
+        $friend->delete();
 
         return to_route('home.index');
     }
@@ -104,7 +104,7 @@ class HomeController extends Controller
     {
         dd($id);
         $friend = Friend::find($id);
-        $friend->delete;
+        $friend->delete();
 
         return to_route('home.index');
     }
