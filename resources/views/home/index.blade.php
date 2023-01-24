@@ -26,7 +26,7 @@
         <main class="md:flex md:container md:mx-auto justify-around">
             <div class="md:w-5/12 lg:w-5/12">
                 <div class="user-info bg-white rounded drop-shadow mx-2">
-                    <form method="post" action="{{ route('home.destroy', Auth::user()->id) }}">@csrf
+                    <form method="post" action="{{ route('home.destroy', Auth::user()->id) }}"  onsubmit="return deleteAccount();">@csrf
                         <div class="p-2 w-full flex justify-between">
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight p-2">
                                 Profile
@@ -133,7 +133,15 @@
         {{-- 削除確認メッセージ --}}
         <script>
             function deleteFriend() {
-                if (confirm('本当に削除しますか？')) {
+                if (confirm('友達リストは復元できません。本当に削除しますか？')) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            function deleteAccount() {
+                if (confirm('アカウントは復元できません。本当に削除しますか？')) {
                     return true;
                 } else {
                     return false;
