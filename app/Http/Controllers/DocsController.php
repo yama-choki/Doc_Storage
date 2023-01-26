@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Docs;
+use App\Models\Friend;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDocRequest;
 
@@ -67,12 +68,18 @@ class DocsController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $doc = Docs::find($id);
+        $mode = $request->mode;
+        $user = Auth::user();
+        $friends = Friend::where("user_id", "=", $user->id)->get();
+
+        return view('docs.show', compact('doc', 'mode', 'friends'));
     }
 
     /**

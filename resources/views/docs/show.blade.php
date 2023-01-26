@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Doc Strage</title>
+    <title>Doc Storage</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -16,18 +16,43 @@
             <x-slot name="header" >
                 <div class="flex">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                        Doc Strage
+                        Doc Storage
                     </h2>
                 </div>
             </x-slot>
         </header>
-        <div class="header-space h-44"></div>
-            <section class="mx-auto text-gray-600 p-4 w-11/12 lg:w-3/4 body-font relative bg-white rounded drop-shadow sticky top-60" style="height:500px;">
+        <div class="header-space" style="height:150px;"></div>
+            <section class="mx-auto text-gray-600 p-4 w-11/12 lg:w-3/4 body-font relative bg-white rounded drop-shadow mb-4">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    投稿を編集する
+                    @if($mode === 'mail')
+                        記事をメール送信する
+                    @elseif($mode === 'edit')
+                        投稿を編集する
+                    @endif
                 </h2>
+                @if($mode === 'mail')
                 <form method="post" action="{{ route('docs.update', $doc->id) }}"> @csrf
+                @elseif($mode === 'edit')
+                <form method="post" action="{{ route('docs.update', $doc->id) }}"> @csrf
+                @endif
                     <div class="p-2 w-full">
+                        @if($mode === 'mail')
+                        <div class="relative">
+                            <label for="name" class="leading-7 text-sm text-gray-600">To a friend</label><br/>
+                            <select name="friend" id="friend" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  leading-8 transition-colors duration-200 ease-in-out">
+                                <option value="">メールを送る相手を選択</option>
+                                @foreach ($friends as $friend)
+                                    <option value="{{ $friend->id }}">{{ $friend->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="relative">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">Comment</label>
+                                <textarea placeholder="メールの本文を200文字以内で入力" id="comment" name="comment" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ old('comment') }}</textarea>
+                            </div>
+                        </div>
+                        @endif
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
                             <input placeholder="100文字以内で入力" value="{{ $doc->title }}" type="text" id="title" name="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -47,9 +72,22 @@
                             </div>
                         </div>
                         <div class="p-2 w-full">
-                            <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                Update !!
-                            </button>
+                            @if($mode === 'mail')
+                                <div class="relative">
+                                    <input value="{{ old('comment') }}" type="checkbox" id="comment" name="comment" class="autofill:bg-yellow-200">
+                                    <label for="name" class="leading-7 text-sm text-gray-600">
+                                        メールの本文はコメントだけにする<br class="md:hidden"/>
+                                        <span>　(タイトル、カテゴリー、テキストは送信しない）</span>
+                                    </label>
+                                </div>
+                                <button class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
+                                    Send Mail !!
+                                </button>
+                            @elseif($mode === 'edit')
+                                <button class="flex mx-auto text-white bg-emerald-500 border-0 py-2 px-8 focus:outline-none hover:bg-emerald-600 rounded text-lg">
+                                    Update !!
+                                </button>
+                            @endif
                         </div>
                     </div>
                     <div class="mx-auto flex w-full">

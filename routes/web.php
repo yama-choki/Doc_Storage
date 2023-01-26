@@ -22,8 +22,8 @@ Route::prefix('docs')
 ->group(function(){
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
-    Route::get('/{id}/edit', 'edit')->name('edit');
-    // Route::get('/{id}', 'show')->name('show');
+    // Route::get('/{id}/edit', 'edit')->name('edit');
+    Route::get('/{id}', 'show')->name('show');
     Route::post('/{id}', 'update')->name('update');
     Route::post('/delete/{id}', 'delete')->name('delete');
     Route::post('/{id}/destroy', 'destroy')->name('destroy');

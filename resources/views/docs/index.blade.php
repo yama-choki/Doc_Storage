@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Doc Strage</title>
+    <title>Doc Storage</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -16,7 +16,7 @@
             <x-slot name="header">
                 <div class="flex">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight w-1/5">
-                        Doc Strage
+                        Doc Storage
                     </h2>
                     <form action="{{ route('docs.index') }}" method="get" class="w-4/5 flex">
                         <input type="search" id="search" name="search" placeholder="資料を探す"
@@ -90,10 +90,18 @@
                                             Document
                                         </button>
                                     </a>
-                                    <form method="GET" action="{{ route('docs.edit', $doc->id) }}">
+                                    <form method="GET" action="{{ route('docs.show', $doc->id) }}">
+                                        <input type="hidden" value="edit" name="mode">
                                         <button
                                             class="flex mx-auto text-white bg-emerald-500 border-0 py-2 px-8 focus:outline-none hover:bg-emerald-600 rounded text-lg">
                                             Edit
+                                        </button>
+                                    </form>
+                                    <form method="GET" action="{{ route('docs.show', $doc->id) }}">
+                                    <input type="hidden" value="mail" name="mode">
+                                        <button
+                                            class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
+                                            Mail
                                         </button>
                                     </form>
                                     <form onsubmit="return deletePost();" method="POST"
