@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DocStrage;
 use App\Models\Docs;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDocRequest;
@@ -31,7 +30,7 @@ class DocsController extends Controller
                 ->where('trash', '=', 0)
                 ->select('id', 'user_id','title', 'category' ,'text', 'url', 'updated_at', 'created_at')
                 ->latest()
-                ->paginate(20);
+                ->paginate(15);
 
         return view('docs.index', compact('docs', 'user'));
     }

@@ -30,7 +30,7 @@
         <div class="header-space h-44"></div>
         <div class="md:flex md:container mx-auto justify-between px-4">
             <section class="md:w-4/12 ">
-                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow sticky top-44 mb-16">
+                <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow mb-16">
                     <form method="post" action="{{ route('docs.store') }}">@csrf
                         <input type="hidden" value="{{ $user->id }}" name="user_id">
                         <div class="p-2 w-full">
