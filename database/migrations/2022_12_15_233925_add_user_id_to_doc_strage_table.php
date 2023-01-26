@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('doc_strages', function (Blueprint $table) {
+        Schema::table('docs', function (Blueprint $table) {
             $table->integer('user_id')->after('id');
         });
     }
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('doc_strage', function (Blueprint $table) {
+        Schema::table('docs', function (Blueprint $table) {
             //
         });
     }

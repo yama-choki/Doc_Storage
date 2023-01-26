@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DocStrage;
+use App\Models\Docs;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDocRequest;
 
-class DocStrageController extends Controller
+class DocsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +26,7 @@ class DocStrageController extends Controller
 
         // 検索対応
         $search = $request->search;
-        $query = DocStrage::search($search);
+        $query = Docs::search($search);
         $docs = $query->where('user_id', '=', $user->id)
                 ->where('trash', '=', 0)
                 ->select('id', 'user_id','title', 'category' ,'text', 'url', 'updated_at', 'created_at')
@@ -53,7 +54,7 @@ class DocStrageController extends Controller
      */
     public function store(StoreDocRequest $request)
     {
-        DocStrage::create([
+        Docs::create([
             'user_id' => $request->user_id,
             'title' => trim($request->title),
             'category' => trim($request->category),
@@ -83,7 +84,7 @@ class DocStrageController extends Controller
      */
     public function edit($id)
     {
-        $doc = DocStrage::find($id);
+        $doc = Docs::find($id);
 
         return view('docs.edit', compact('doc'));
     }
@@ -97,7 +98,7 @@ class DocStrageController extends Controller
      */
     public function update(StoreDocRequest $request, $id)
     {
-        $doc = DocStrage::find($id);
+        $doc = Docs::find($id);
         $doc->title = $request->title;
         $doc->category = $request->category;
         $doc->url = $request->url;
@@ -109,7 +110,7 @@ class DocStrageController extends Controller
 
     public function delete(Request $request, $id)
     {
-        $doc = DocStrage::find($id);
+        $doc = Docs::find($id);
         $doc->trash = 1;
         $doc->save();
 
@@ -124,7 +125,7 @@ class DocStrageController extends Controller
      */
     public function destroy($id)
     {
-        $doc = DocStrage::find($id);
+        $doc = Docs::find($id);
         $doc->delete();
 
         return to_route('docs.index');
