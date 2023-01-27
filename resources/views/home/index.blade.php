@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -73,7 +72,7 @@
                             </div>
                             <div class="relative">
                                 <label for="name" class="leading-7 text-sm text-gray-600">Friend Email</label>
-                                <input placeholder="友達のメールアドレスを入力してください" type="text" id="email" name="email"
+                                <input placeholder="友達のメールアドレスを入力してください" type="email" id="email" name="email"
                                     value="{{ old('email') }}"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>

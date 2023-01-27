@@ -102,7 +102,6 @@ class HomeController extends Controller
 
     public function delete($id)
     {
-        dd($id);
         $friend = Friend::find($id);
         $friend->delete();
 

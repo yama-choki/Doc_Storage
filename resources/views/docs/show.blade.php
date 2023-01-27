@@ -39,10 +39,10 @@
                         @if($mode === 'mail')
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">To a friend</label><br/>
-                            <select name="friend" id="friend" class="bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  leading-8 transition-colors duration-200 ease-in-out">
+                            <select name="friend" id="friend" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  leading-8 transition-colors duration-200 ease-in-out">
                                 <option value="">メールを送る相手を選択</option>
                                 @foreach ($friends as $friend)
-                                    <option value="{{ $friend->id }}">{{ $friend->name }}</option>
+                                    <option value="{{ $friend->id }}">{{ $friend->name }} - {{ $friend->email }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -77,7 +77,7 @@
                                     <input value="{{ old('comment') }}" type="checkbox" id="comment" name="comment" class="autofill:bg-yellow-200">
                                     <label for="name" class="leading-7 text-sm text-gray-600">
                                         メールの本文はコメントだけにする<br class="md:hidden"/>
-                                        <span>　(タイトル、カテゴリー、テキストは送信しない）</span>
+                                        <span>　(タイトル、カテゴリー、テキストを添付しない）</span>
                                     </label>
                                 </div>
                                 <button class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
