@@ -24,6 +24,7 @@ Route::prefix('docs')
     Route::post('/', 'store')->name('store');
     // Route::get('/{id}/edit', 'edit')->name('edit');
     Route::get('/{id}', 'show')->name('show');
+    Route::post('/{id}/mail', 'send')->name('send');
     Route::post('/{id}', 'update')->name('update');
     Route::post('/delete/{id}', 'delete')->name('delete');
     Route::post('/{id}/destroy', 'destroy')->name('destroy');

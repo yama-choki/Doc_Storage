@@ -31,7 +31,7 @@
                     @endif
                 </h2>
                 @if($mode === 'mail')
-                <form method="post" action="{{ route('docs.update', $doc->id) }}"> @csrf
+                <form method="post" action="{{ route('docs.send', $doc->id) }}"> @csrf
                 @elseif($mode === 'edit')
                 <form method="post" action="{{ route('docs.update', $doc->id) }}"> @csrf
                 @endif
@@ -39,28 +39,28 @@
                         @if($mode === 'mail')
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">To a friend</label><br/>
-                            <select name="friend" id="friend" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  leading-8 transition-colors duration-200 ease-in-out">
+                            <select name="email" id="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700  leading-8 transition-colors duration-200 ease-in-out">
                                 <option value="">メールを送る相手を選択</option>
                                 @foreach ($friends as $friend)
-                                    <option value="{{ $friend->id }}">{{ $friend->name }} - {{ $friend->email }}</option>
+                                    <option value="{{ $friend->email }}"  {{ old('email') == $friend->email ? 'selected' : '' }}>{{ $friend->name }} - {{ $friend->email }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="relative">
-                            <div class="relative">
-                                <label for="name" class="leading-7 text-sm text-gray-600">Comment</label>
-                                <textarea placeholder="メールの本文を200文字以内で入力" id="comment" name="comment" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{ old('comment') }}</textarea>
-                            </div>
+                            <label for="name" class="leading-7 text-sm text-gray-600">Mail Subject</label>
+                            <input placeholder="メールの件名を入力" value="{{ old('subject') }}" type="text" id="subject" name="subject" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         @endif
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">Title</label>
                             <input placeholder="100文字以内で入力" value="{{ $doc->title }}" type="text" id="title" name="title" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
+                        @if($mode === 'edit')
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">Category</label>
                             <input placeholder="言語や技術名を入力" value="{{ $doc->category }}" type="text" id="category" name="category" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
+                        @endif
                         <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">URL</label>
                             <input placeholder="URLをコピペ" value="{{ $doc->url }}" type="url" id="url" name="url" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -73,13 +73,6 @@
                         </div>
                         <div class="p-2 w-full">
                             @if($mode === 'mail')
-                                <div class="relative">
-                                    <input value="{{ old('comment') }}" type="checkbox" id="comment" name="comment" class="autofill:bg-yellow-200">
-                                    <label for="name" class="leading-7 text-sm text-gray-600">
-                                        メールの本文はコメントだけにする<br class="md:hidden"/>
-                                        <span>　(タイトル、カテゴリー、テキストを添付しない）</span>
-                                    </label>
-                                </div>
                                 <button class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
                                     Send Mail !!
                                 </button>

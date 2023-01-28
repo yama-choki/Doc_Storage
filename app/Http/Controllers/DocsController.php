@@ -7,6 +7,8 @@ use App\Models\Docs;
 use App\Models\Friend;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDocRequest;
+use App\Mail\SendDocMail;
+use Illuminate\Support\Facades\Mail;
 
 class DocsController extends Controller
 {
@@ -134,6 +136,27 @@ class DocsController extends Controller
         $doc = Docs::find($id);
         $doc->delete();
 
+        return to_route('docs.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function send(Request $request)
+    {
+        $email = $request->email;
+        $user = Auth::user();
+        
+        $subject = $request->subject;
+        $title = $request->title;
+        $url = $request->url;
+        $text = $request->text;
+
+        // dd($request);
+
+        Mail::to($email)->send(new SendDocMail($user, $subject, $title, $url, $text));
         return to_route('docs.index');
     }
 }
