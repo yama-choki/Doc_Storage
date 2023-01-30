@@ -20,6 +20,7 @@
                 <x-input-label for="email" :value="__('メールアドレス')" />
 
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <p class="text-sm mt-1">テストアカウント : test@test.com</p>
             </div>
 
             <!-- Password -->
@@ -30,6 +31,7 @@
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
+                <p class="text-sm mt-1">テストアカウント : password123</p>
             </div>
 
             <div class="flex items-center justify-end mt-4">

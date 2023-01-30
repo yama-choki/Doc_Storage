@@ -80,6 +80,9 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('home.index')" :active="request()->routeIs('home.index')">
+                {{ __('Home') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('docs.index')" :active="request()->routeIs(['docs.index'])">
                 {{ __('Doc Strage') }}
             </x-responsive-nav-link>
