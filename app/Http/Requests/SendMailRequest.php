@@ -25,8 +25,8 @@ class SendMailRequest extends FormRequest
     {
         return [
             'email' => ['required'],
-            'subject' => ['required', 'max:100'],
             'title' => ['required', 'string', 'max:100'],
+            'category' => ['required', 'string', 'max:20'],
             'url' => ['required', 'string'],
             'text' => ['max:200'],
         ];

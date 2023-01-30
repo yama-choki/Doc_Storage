@@ -18,10 +18,10 @@ class SendDocMail extends Mailable
      *
      * @return void
      */
-    public function __construct($user, $subject, $title, $url, $text)
+    public function __construct($user, $category, $title, $url, $text)
     {
         $this->user = $user;
-        $this->subject = $subject;
+        $this->category = $category;
         $this->title = $title;
         $this->url = $url;
         $this->text = $text;
@@ -36,8 +36,8 @@ class SendDocMail extends Mailable
     public function build()
     {
         return $this->view('emails.doc')
-                ->subject($this->subject)
-                ->from($this->user->email, $this->user->name )
+                ->subject($this->user->name."から".$this->category."に関する資料が届きました。")
+                ->from($this->user->email, $this->user->name)
                 ->with([
                     'title' => $this->title,
                     'url' => $this->url,

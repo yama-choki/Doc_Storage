@@ -149,12 +149,12 @@ class DocsController extends Controller
     {
         $email = $request->email;
         $user = Auth::user();
-        $subject = $request->subject;
+        $category = $request->category;
         $title = $request->title;
         $url = $request->url;
         $text = $request->text;
 
-        Mail::to($email)->send(new SendDocMail($user, $subject, $title, $url, $text));
+        Mail::to($email)->send(new SendDocMail($user, $category, $title, $url, $text));
         return to_route('docs.index');
     }
 }
