@@ -89,6 +89,10 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="mx-3 flex w-full">
+                            <!-- Validation Errors -->
+                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                        </div>
                     </form>
                 </div>
             </div>

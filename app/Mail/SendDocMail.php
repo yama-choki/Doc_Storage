@@ -42,6 +42,7 @@ class SendDocMail extends Mailable
                     'title' => $this->title,
                     'url' => $this->url,
                     'text' => $this->text,
+                    'user' => $this->user
                 ]);
     }
 

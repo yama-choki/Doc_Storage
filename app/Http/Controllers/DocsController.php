@@ -7,6 +7,7 @@ use App\Models\Docs;
 use App\Models\Friend;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreDocRequest;
+use App\Http\Requests\SendMailRequest;
 use App\Mail\SendDocMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -144,17 +145,14 @@ class DocsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function send(Request $request)
+    public function send(SendMailRequest $request)
     {
         $email = $request->email;
         $user = Auth::user();
-        
         $subject = $request->subject;
         $title = $request->title;
         $url = $request->url;
         $text = $request->text;
-
-        // dd($request);
 
         Mail::to($email)->send(new SendDocMail($user, $subject, $title, $url, $text));
         return to_route('docs.index');

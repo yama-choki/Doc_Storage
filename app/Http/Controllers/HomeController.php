@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Friend;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AddFriendRequest;
 
 class HomeController extends Controller
 {
@@ -41,7 +42,7 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddFriendRequest $request)
     {
         Friend::create([
             'user_id' => $request->user_id,
