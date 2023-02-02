@@ -37,7 +37,6 @@ class SendDocMail extends Mailable
     {
         return $this->view('emails.doc')
                 ->subject($this->user->name."から".$this->category."に関する資料が届きました。")
-                ->from($this->user->email, $this->user->name)
                 ->with([
                     'title' => $this->title,
                     'url' => $this->url,

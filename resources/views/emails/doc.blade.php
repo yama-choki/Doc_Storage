@@ -55,9 +55,9 @@
   </style>
 <body>
   <div class="mail">
-    <h2 class="">
-      {{ $user->name }}から以下の資料を受け取りました。
-    </h2>
+    <h3 class="text">
+      {{ $user->name }}({{ $user->email }})<br />から資料を受け取りました。
+    </h3>
     <div class="content">
       <h3>{{ $title }}</h3>
       <div class="text">{{ $text }}</div>
