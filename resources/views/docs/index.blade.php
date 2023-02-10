@@ -78,40 +78,46 @@
                         <li class="w-full">
                             <div class="bg-white mt-4 p-4 rounded drop-shadow w-full">
                                 <div class="flex justify-between">
-                                    <div>{{ $doc->category }}</div>
+                                    <div class="w-2/5 break-words whitespace-pre-line">{{ $doc->category }}</div>
                                     <div>{{ $doc->updated_at->format('Y/m/d-H:i') }}</div>
                                 </div>
                                 <h1 class="font-bold break-words whitespace-pre-line">{{ $doc->title }}</h1>
                                 <div class="break-words whitespace-pre-line">{{ $doc->text }}</div>
-                                <div class="flex justify-around">
-                                    <a href="{{ $doc->url }}" class="" target="_blank">
-                                        <button
-                                            class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                            Document
-                                        </button>
-                                    </a>
-                                    <form method="GET" action="{{ route('docs.show', $doc->id) }}">
-                                        <input type="hidden" value="edit" name="mode">
-                                        <button
-                                            class="flex mx-auto text-white bg-emerald-500 border-0 py-2 px-8 focus:outline-none hover:bg-emerald-600 rounded text-lg">
-                                            Edit
-                                        </button>
-                                    </form>
-                                    <form method="GET" action="{{ route('docs.show', $doc->id) }}">
-                                    <input type="hidden" value="mail" name="mode">
-                                        <button
-                                            class="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
-                                            Mail
-                                        </button>
-                                    </form>
-                                    <form onsubmit="return deletePost();" method="POST"
-                                        action="{{ route('docs.delete', $doc->id) }}"
-                                        id="delete_{{ $doc->id }}">@csrf
-                                        <button type="submit" href="#" data-id="{{ $doc->id }}"
-                                            class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-5 focus:outline-none hover:bg-pink-600 rounded text-lg">
-                                            Delete
-                                        </button>
-                                    </form>
+                                <div class="flex justify-around flex-wrap">
+                                    <div class="max-[470px]:mx-4">
+                                        <a href="{{ $doc->url }}" class="" target="_blank">
+                                            <button
+                                                class="flex text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                                Document
+                                            </button>
+                                        </a>
+                                    </div>
+                                    <div class="max-[470px]:mx-4">
+                                        <form method="GET" action="{{ route('docs.show', $doc->id) }}">
+                                            <input type="hidden" value="edit" name="mode">
+                                            <button
+                                                class="flex text-white bg-emerald-500 border-0 py-2 px-8 focus:outline-none hover:bg-emerald-600 rounded text-lg">
+                                                Edit
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="max-[470px]:mx-4 max-[470px]:mt-1">
+                                        <form method="GET" action="{{ route('docs.show', $doc->id) }}">
+                                        <input type="hidden" value="mail" name="mode">
+                                            <button
+                                                class="flex text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">
+                                                Mail
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="max-[470px]:mx-4 max-[470px]:mt-1">
+                                        <form onsubmit="return deletePost();" method="POST" action="{{ route('docs.delete', $doc->id) }}" id="delete_{{ $doc->id }}">@csrf
+                                            <button type="submit" href="#" data-id="{{ $doc->id }}"
+                                                class="flex text-white bg-pink-500 border-0 py-2 px-5 focus:outline-none hover:bg-pink-600 rounded text-lg">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </li>

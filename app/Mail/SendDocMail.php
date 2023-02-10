@@ -25,7 +25,7 @@ class SendDocMail extends Mailable
         $this->title = $title;
         $this->url = $url;
         $this->text = $text;
-        
+
     }
 
     /**
@@ -45,5 +45,5 @@ class SendDocMail extends Mailable
                 ]);
     }
 
-    
+
 }
