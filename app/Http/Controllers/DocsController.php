@@ -20,6 +20,8 @@ class DocsController extends Controller
      */
     public function index(Request $request)
     {
+        // 画面表示
+
         $user = Auth::user();
         // 通常
         // $docs = DocStrage::where('user_id', '=', $user->id)->latest()->get();
@@ -29,7 +31,9 @@ class DocsController extends Controller
 
         // 検索対応
         $search = $request->search;
+        // 検索ワードで絞り込み
         $query = Docs::search($search);
+        // docsテーブルから自分の投稿かつtrashの値が0のモノを取得
         $docs = $query->where('user_id', '=', $user->id)
                 ->where('trash', '=', 0)
                 ->select('id', 'user_id','title', 'category' ,'text', 'url', 'updated_at', 'created_at')
@@ -40,16 +44,6 @@ class DocsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -57,6 +51,7 @@ class DocsController extends Controller
      */
     public function store(StoreDocRequest $request)
     {
+        // 投稿をdocsテーブルに送信
         Docs::create([
             'user_id' => $request->user_id,
             'title' => trim($request->title),
@@ -77,25 +72,13 @@ class DocsController extends Controller
      */
     public function show(Request $request, $id)
     {
+        // modeの値によってshowページの内容を変えて表示
         $doc = Docs::find($id);
         $mode = $request->mode;
         $user = Auth::user();
         $friends = Friend::where("user_id", "=", $user->id)->get();
 
         return view('docs.show', compact('doc', 'mode', 'friends'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $doc = Docs::find($id);
-
-        return view('docs.edit', compact('doc'));
     }
 
     /**
@@ -119,23 +102,10 @@ class DocsController extends Controller
 
     public function delete(Request $request, $id)
     {
+        // trashの値を1に変え、削除扱いにする
         $doc = Docs::find($id);
         $doc->trash = 1;
         $doc->save();
-
-        return to_route('docs.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $doc = Docs::find($id);
-        $doc->delete();
 
         return to_route('docs.index');
     }

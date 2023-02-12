@@ -22,12 +22,10 @@ Route::prefix('docs')
 ->group(function(){
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
-    // Route::get('/{id}/edit', 'edit')->name('edit');
     Route::get('/{id}', 'show')->name('show');
     Route::post('/{id}/mail', 'send')->name('send');
     Route::post('/{id}', 'update')->name('update');
     Route::post('/delete/{id}', 'delete')->name('delete');
-    Route::post('/{id}/destroy', 'destroy')->name('destroy');
 });
 
 Route::prefix('home')
@@ -38,7 +36,6 @@ Route::prefix('home')
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
     Route::get('/{id}/edit', 'edit')->name('edit');
-    // Route::get('/{id}', 'show')->name('show');
     Route::post('/{id}', 'update')->name('update');
     Route::post('/{id}/delete', 'delete')->name('delete');
     Route::post('/{id}/destroy', 'destroy')->name('destroy');
