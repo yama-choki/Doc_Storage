@@ -12,6 +12,7 @@
 
 <body class="flex flex-col min-h-[100vh]">
     <x-app-layout>
+{{-- ヘッダー　ここから --}}
         <header>
             <x-slot name="header">
                 <div class="flex">
@@ -27,8 +28,10 @@
                 </div>
             </x-slot>
         </header>
+{{-- ヘッダー　ここまで --}}
         <div class="header-space h-44"></div>
         <div class="md:flex md:container mx-auto justify-between px-4">
+{{-- 投稿フォーム　ここから 使用する値：title, category, url, text, user_id,  入力値をdocsテーブルに送信--}}
             <section class="md:w-4/12 ">
                 <div class="text-gray-600 body-font relative bg-white  rounded drop-shadow mb-16">
                     <form method="post" action="{{ route('docs.store') }}">@csrf
@@ -71,6 +74,8 @@
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4 p-4" :errors="$errors" />
             </section>
+{{-- 投稿フォーム　ここまで --}}
+{{-- 投稿のリスト　ここから  使用する値：$docs  処理：自分の投稿をリスト表示、URL先に遷移、編集フォームに遷移、メール送信フォームに遷移、投稿の削除--}}
             <section class="md:w-7/12 sm:mt-16 md:mt-0 mb-8">
                 {{ $docs->links() }}
                 <ul class="mb-10">
@@ -126,8 +131,9 @@
                 {{ $docs->links() }}
             </section>
         </div>
+{{-- 投稿のリスト　ここまで --}}
 
-        {{-- 削除確認メッセージ --}}
+{{-- 削除確認メッセージ ここから--}}
         <script>
             function deletePost() {
                 if (confirm('本当に削除しますか？')) {
@@ -137,6 +143,7 @@
                 }
             }
         </script>
+{{-- 削除確認メッセージ ここまで--}}
     </x-app-layout>
 
 </body>

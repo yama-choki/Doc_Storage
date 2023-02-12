@@ -12,6 +12,7 @@
 
 <body class="flex flex-col min-h-[100vh]">
     <x-app-layout>
+{{-- ヘッダー　ここから --}}
         <header>
             <x-slot name="header" >
                 <div class="flex">
@@ -21,7 +22,9 @@
                 </div>
             </x-slot>
         </header>
-        <div class="header-space" style="height:150px;"></div>
+{{-- ヘッダー　ここまで --}}
+<div class="header-space" style="height:150px;"></div>
+{{-- 編集・メール送信フォーム　ここから  使用する値：title, category, url, text email, $friends  処理：投稿内容の編集、投稿内容をフレンドに送信 --}}
         <section class="mx-auto text-gray-600 p-4 w-11/12 lg:w-3/4 body-font relative bg-white rounded drop-shadow mb-4">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 @if($mode === 'mail')
@@ -83,6 +86,8 @@
                 </div>
             </form>
         </section>
+{{-- 編集・メール送信フォーム　ここまで --}}
+{{-- 削除確認メッセージ ここから--}}
         <script>
             function sendMail() {
                 if (confirm('フォームの内容でメールを送信しますか？')) {
@@ -92,6 +97,7 @@
                 }
             }
         </script>
+{{-- 削除確認メッセージ ここまで--}}
     </x-app-layout>
 
 </body>

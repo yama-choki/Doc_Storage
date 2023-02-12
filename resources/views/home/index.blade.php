@@ -12,6 +12,7 @@
 
 <body class="flex flex-col min-h-[100vh]">
     <x-app-layout>
+{{-- ヘッダー　ここから --}}
         <header>
             <x-slot name="header">
                 <div class="flex">
@@ -21,9 +22,11 @@
                 </div>
             </x-slot>
         </header>
+{{-- ヘッダー　ここまで --}}
 
         <div style="height:150px"></div>
         <main class="md:flex md:container md:mx-auto justify-around">
+{{-- プロフィール　ここから  使用する値：Auth::user()  処理：ユーザー情報をuserテーブルから削除--}}
             <div class="md:w-5/12 lg:w-5/12">
                 <div class="user-info bg-white rounded drop-shadow mx-2">
                     <form method="post" action="{{ route('home.destroy', Auth::user()->id) }}"  onsubmit="return deleteAccount();">@csrf
@@ -53,6 +56,8 @@
                         </div>
                     </form>
                 </div>
+{{-- プロフィール　ここまで --}}
+{{-- フレンド追加フォーム　ここから  使用する値：name, email, remarks, user_id  処理：入力値をfriendsテーブルに送信 --}}
                 <div class="user-info bg-white rounded drop-shadow mx-2 mt-4">
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight p-2">
                         Add Friends
@@ -97,6 +102,8 @@
                     </form>
                 </div>
             </div>
+{{-- フレンド追加フォーム　ここまで --}}
+{{-- フレンドリスト　ここから  使用する値：$friends  行う処理：フレンドをリストを表示、指定したフレンドをfriendsテーブルから削除 --}}
             <div class="contact-list w-full md:w-7/12 lg:w-5/12 p-2">
                 {{ $friends->links() }}
                 <ul class="mb-10">
@@ -132,12 +139,13 @@
                 </ul>
                 {{ $friends->links() }}
             </div>
+{{-- フレンドリスト　ここまで --}}
         </main>
 
-        {{-- 削除確認メッセージ --}}
+{{-- 削除確認メッセージ --}}
         <script>
             function deleteFriend() {
-                if (confirm('友達リストは復元できません。本当に削除しますか？')) {
+                if (confirm('フレンドリストは復元できません。本当に削除しますか？')) {
                     return true;
                 } else {
                     return false;
@@ -152,6 +160,7 @@
                 }
             }
         </script>
+{{-- 削除確認メッセージ --}}
     </x-app-layout>
 
 </body>
